@@ -1,0 +1,12 @@
+ask **
+ ('Bilim Kurgu ve Fantastik'); **
+ ('Bilgisayarlar ve İnternet'); **
+ ('Biyografiler ve Anılar');
+ ('Çizgi Romanlar, Manga ve Grafik Romanlar');
+('Ders ve Alıştırma Kitapları');
+ ('Edebiyat ve Kurgu'); **
+('Gizem');
+ ('Hukuk');
+ ('Mizah ve Eğlence');
+ ('Tarih'); **
+('Yemek Pişirme, Yiyecekler ve Şarap');
