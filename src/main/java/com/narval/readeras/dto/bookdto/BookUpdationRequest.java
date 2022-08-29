@@ -1,10 +1,7 @@
-package com.narval.readeras.dto;
+package com.narval.readeras.dto.bookdto;
 
 import com.narval.readeras.model.Category;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -12,13 +9,12 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookCreationDTO {
-    private int id;
+public class BookUpdationRequest {
     private String author;
     private String title;
     private Short page;
+    private String image;
     private String description;
     private BigDecimal price;
     private Category category;
-    private String image;
 }

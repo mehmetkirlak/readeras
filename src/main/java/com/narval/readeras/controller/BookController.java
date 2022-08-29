@@ -1,11 +1,9 @@
 package com.narval.readeras.controller;
 
-import com.narval.readeras.dto.BookCreationRequest;
-import com.narval.readeras.dto.BookDTO;
-import com.narval.readeras.dto.BookUpdationRequest;
-import com.narval.readeras.model.Book;
+import com.narval.readeras.dto.bookdto.BookCreationRequest;
+import com.narval.readeras.dto.bookdto.BookDTO;
+import com.narval.readeras.dto.bookdto.BookUpdationRequest;
 import com.narval.readeras.services.BookService;
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +46,6 @@ public class BookController {
         return ResponseEntity.ok().build();
     }
 
-    // TODO: 8/28/2022 create crup operations on controller  
+    // TODO: getBookByCategoryName function
 
 }

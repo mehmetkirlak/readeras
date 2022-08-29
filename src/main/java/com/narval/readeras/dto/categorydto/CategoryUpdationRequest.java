@@ -1,4 +1,4 @@
-package com.narval.readeras.dto;
+package com.narval.readeras.dto.categorydto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryCreationDTO {
-
-    private int id;
+public class CategoryUpdationRequest {
     private String name;
 }

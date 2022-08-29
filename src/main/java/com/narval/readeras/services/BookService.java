@@ -1,10 +1,10 @@
 package com.narval.readeras.services;
 
 
-import com.narval.readeras.dto.BookCreationRequest;
-import com.narval.readeras.dto.BookDTO;
-import com.narval.readeras.dto.BookDTOConverter;
-import com.narval.readeras.dto.BookUpdationRequest;
+import com.narval.readeras.dto.bookdto.BookCreationRequest;
+import com.narval.readeras.dto.bookdto.BookDTO;
+import com.narval.readeras.dto.bookdto.BookDTOConverter;
+import com.narval.readeras.dto.bookdto.BookUpdationRequest;
 import com.narval.readeras.model.Book;
 import com.narval.readeras.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -58,17 +58,17 @@ public class BookService {
         return bookDTOConverter.convert(book);
     }
 
-    public BookDTO updateBook(int id, BookUpdationRequest bookCreationRequest){
+    public BookDTO updateBook(int id, BookUpdationRequest bookUpdationRequest){
         Optional<Book> bookOptional = bookRepository.findById(id);
 
         bookOptional.ifPresent(book -> {
-                book.setPage(bookCreationRequest.getPage());
-                book.setImage(bookCreationRequest.getImage());
-                book.setAuthor(bookCreationRequest.getAuthor());
-                book.setPrice(bookCreationRequest.getPrice());
-                book.setTitle(bookCreationRequest.getTitle());
-                book.setDescription(bookCreationRequest.getDescription());
-                book.setCategory(bookCreationRequest.getCategory());
+                book.setPage(bookUpdationRequest.getPage());
+                book.setImage(bookUpdationRequest.getImage());
+                book.setAuthor(bookUpdationRequest.getAuthor());
+                book.setPrice(bookUpdationRequest.getPrice());
+                book.setTitle(bookUpdationRequest.getTitle());
+                book.setDescription(bookUpdationRequest.getDescription());
+                book.setCategory(bookUpdationRequest.getCategory());
 
                 bookRepository.save(book);
                 });

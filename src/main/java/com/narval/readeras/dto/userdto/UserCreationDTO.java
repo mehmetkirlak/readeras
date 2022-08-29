@@ -1,4 +1,4 @@
-package com.narval.readeras.dto;
+package com.narval.readeras.dto.userdto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

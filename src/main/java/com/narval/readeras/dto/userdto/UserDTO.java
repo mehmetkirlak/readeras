@@ -1,4 +1,4 @@
-package com.narval.readeras.dto;
+package com.narval.readeras.dto.userdto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +13,8 @@ public class UserDTO {
 
     private Long id;
     private String username;
+    private String password;
     private String full_name;
     private String address;
+    private int phone;
 }

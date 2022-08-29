@@ -1,4 +1,4 @@
-package com.narval.readeras.dto;
+package com.narval.readeras.dto.bookdto;
 
 import com.narval.readeras.model.Book;
 import org.springframework.stereotype.Component;
