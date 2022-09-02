@@ -33,7 +33,7 @@ public class CategoryService {
         return categoryDTOList;
     }
 
-    public CategoryDTO getCategoryById(int id){
+    public CategoryDTO getCategoryDTOById(int id){
         Optional<Category> categoryOptional = categoryRepository.findById(id);
         return categoryOptional.map(categoryDTOConverter::convert).orElse(new CategoryDTO());
     }
@@ -62,5 +62,11 @@ public class CategoryService {
 
     public void deleteCategory(int id){
         categoryRepository.deleteById(id);
+    }
+
+    public Category getCategoryById(int id){
+        Optional<Category> categoryOptional = categoryRepository.findById(id);
+        Category category = categoryOptional.get();
+        return category;
     }
 }

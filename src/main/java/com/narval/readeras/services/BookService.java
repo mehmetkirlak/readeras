@@ -5,7 +5,9 @@ import com.narval.readeras.dto.bookdto.BookCreationRequest;
 import com.narval.readeras.dto.bookdto.BookDTO;
 import com.narval.readeras.dto.bookdto.BookDTOConverter;
 import com.narval.readeras.dto.bookdto.BookUpdationRequest;
+import com.narval.readeras.exception.CategoryNotFoundException;
 import com.narval.readeras.model.Book;
+import com.narval.readeras.model.Category;
 import com.narval.readeras.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +22,12 @@ public class BookService {
     private final BookRepository bookRepository;
     private final BookDTOConverter bookDTOConverter;
 
-    public BookService(BookRepository bookRepository, BookDTOConverter bookDTOConverter) {
+    private final CategoryService categoryService;
+
+    public BookService(BookRepository bookRepository, BookDTOConverter bookDTOConverter, CategoryService categoryService) {
         this.bookRepository = bookRepository;
         this.bookDTOConverter = bookDTOConverter;
+        this.categoryService = categoryService;
     }
 
     public List<BookDTO> getAllBooks(){
@@ -43,22 +48,33 @@ public class BookService {
     }
 
     public BookDTO createBook(BookCreationRequest bookCreationRequest){
-        Book book = new Book();
-        book.setId(bookCreationRequest.getId());
-        book.setPage(bookCreationRequest.getPage());
-        book.setImage(bookCreationRequest.getImage());
-        book.setAuthor(bookCreationRequest.getAuthor());
-        book.setPrice(bookCreationRequest.getPrice());
-        book.setTitle(bookCreationRequest.getTitle());
-        book.setDescription(bookCreationRequest.getDescription());
-        book.setCategory(bookCreationRequest.getCategory());
+        Category category  = categoryService.getCategoryById(bookCreationRequest.getCategory().getId());
 
-        bookRepository.save(book);
+        if (category == null ){
+            throw new CategoryNotFoundException("Category Not Found");
+        }
 
-        return bookDTOConverter.convert(book);
+        Book book = Book.builder()
+                .id(bookCreationRequest.getId())
+                .page(bookCreationRequest.getPage())
+                .image(bookCreationRequest.getImage())
+                .author(bookCreationRequest.getAuthor())
+                .price(bookCreationRequest.getPrice())
+                .title(bookCreationRequest.getTitle())
+                .description(bookCreationRequest.getDescription())
+                .category(bookCreationRequest.getCategory())
+                .build();
+
+        return bookDTOConverter.convert(bookRepository.save(book));
     }
 
     public BookDTO updateBook(int id, BookUpdationRequest bookUpdationRequest){
+        Category category  = categoryService.getCategoryById(bookUpdationRequest.getCategory().getId());
+
+        if (category == null ){
+            throw new CategoryNotFoundException("Category Not Found");
+        }
+
         Optional<Book> bookOptional = bookRepository.findById(id);
 
         bookOptional.ifPresent(book -> {
