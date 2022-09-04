@@ -17,5 +17,5 @@ public class BookDTO {
     private Short page;
     private String description;
     private BigDecimal price;
-    private Category category;
+    private int categoryId;
 }

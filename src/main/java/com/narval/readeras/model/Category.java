@@ -26,7 +26,7 @@ public class Category {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "categoryId", fetch = FetchType.LAZY)
     private Set<Book> books;
 
 }

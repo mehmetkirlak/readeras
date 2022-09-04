@@ -19,6 +19,6 @@ public class BookCreationDTO {
     private Short page;
     private String description;
     private BigDecimal price;
-    private Category category;
     private String image;
+    private int categoryId;
 }

@@ -48,7 +48,7 @@ public class BookService {
     }
 
     public BookDTO createBook(BookCreationRequest bookCreationRequest){
-        Category category  = categoryService.getCategoryById(bookCreationRequest.getCategory().getId());
+        Category category  = categoryService.getCategoryById(bookCreationRequest.getCategoryId());
 
         if (category == null ){
             throw new CategoryNotFoundException("Category Not Found");
@@ -62,14 +62,14 @@ public class BookService {
                 .price(bookCreationRequest.getPrice())
                 .title(bookCreationRequest.getTitle())
                 .description(bookCreationRequest.getDescription())
-                .category(bookCreationRequest.getCategory())
+                .categoryId(bookCreationRequest.getCategoryId())
                 .build();
 
         return bookDTOConverter.convert(bookRepository.save(book));
     }
 
     public BookDTO updateBook(int id, BookUpdationRequest bookUpdationRequest){
-        Category category  = categoryService.getCategoryById(bookUpdationRequest.getCategory().getId());
+        Category category  = categoryService.getCategoryById(bookUpdationRequest.getCategoryId());
 
         if (category == null ){
             throw new CategoryNotFoundException("Category Not Found");
@@ -84,7 +84,7 @@ public class BookService {
                 book.setPrice(bookUpdationRequest.getPrice());
                 book.setTitle(bookUpdationRequest.getTitle());
                 book.setDescription(bookUpdationRequest.getDescription());
-                book.setCategory(bookUpdationRequest.getCategory());
+                book.setCategoryId(bookUpdationRequest.getCategoryId());
 
                 bookRepository.save(book);
                 });

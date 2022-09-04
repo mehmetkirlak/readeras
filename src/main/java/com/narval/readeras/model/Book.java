@@ -39,8 +39,7 @@ public class Book {
     @Column(name = "image", nullable = false)
     private String image;
 
-    @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category;
+    private int categoryId;
 
 }

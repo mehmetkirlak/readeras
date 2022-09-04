@@ -13,7 +13,7 @@ public class BookDTOConverter {
         bookDTO.setPrice(book.getPrice());
         bookDTO.setDescription(book.getDescription());
         bookDTO.setTitle(book.getTitle());
-        bookDTO.setCategory(book.getCategory());
+        bookDTO.setCategoryId(book.getCategoryId());
         return bookDTO;
     }
 }
