@@ -10,14 +10,14 @@ import java.math.BigDecimal;
 
 @Entity
 @Data
-@Table(name = "books")
+@Table(name = "books", schema ="public")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private int id;
 

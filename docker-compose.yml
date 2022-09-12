@@ -1,0 +1,30 @@
+version: '3'
+services:
+  app:
+    image: 'readeras'
+    build:
+      context: .
+    container_name: readeras
+    depends_on:
+      - postgresqldb
+    ports:
+      - "9090:8080"
+    environment:
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresqldb:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123
+
+
+  postgresqldb:
+    image: 'postgres:13'
+    container_name: postgresqldb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+volumes:
+  data: {}
