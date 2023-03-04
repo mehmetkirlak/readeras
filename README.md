@@ -1,7 +1,7 @@
 
 # "Readeras" is a Backend of simple e-commerce book market.
 ___
-### Spring Boot and ReactJS Application
+### Spring Boot Application
 ___
 
 ### Summary
